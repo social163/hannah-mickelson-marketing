@@ -85,6 +85,75 @@
     color: var(--cream);
   }
 
+  /* ── HAMBURGER ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--espresso);
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--cream);
+    z-index: 150;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-menu.open {
+    display: flex;
+    opacity: 1;
+  }
+
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--espresso);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    padding: 10px 0;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:hover { color: var(--warm-gold); }
+
+  .mobile-menu a.highlight {
+    color: var(--warm-gold);
+    font-style: italic;
+  }
+
+  .mobile-menu-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--light-taupe);
+    margin: 8px 0;
+  }
+
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
@@ -297,14 +366,6 @@
     font-size: 1.4rem;
     filter: sepia(0.4) saturate(0.8);
     flex-shrink: 0;
-  }
-
-  .service-left {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-shrink: 0;
-    width: 240px;
   }
 
   .service-name {
@@ -910,90 +971,18 @@
     nav { padding: 20px 28px; }
     .nav-links { display: none; }
     .nav-cta { display: none; }
+    .hamburger { display: flex; }
     .hero, section { padding-left: 28px; padding-right: 28px; }
     .hero { padding-top: 120px; }
     .services-grid { gap: 1px; }
-  .service-card { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .service-left { width: 100%; }
-  .service-desc { border-left: none; padding-left: 0; border-top: 1px solid var(--light-taupe); padding-top: 16px; }
-  .services-bottom-row { grid-template-columns: 1fr; }
+    .service-card { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .service-left { width: 100%; }
+    .service-desc { border-left: none; padding-left: 0; border-top: 1px solid var(--light-taupe); padding-top: 16px; }
     .cta-strip { flex-direction: column; align-items: flex-start; padding: 60px 28px; }
     footer { flex-direction: column; gap: 16px; align-items: flex-start; padding: 40px 28px; }
     .hero-scroll { left: 28px; }
     .price-card { flex: 0 0 260px; }
-  }
-
-  /* ── HAMBURGER ── */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    z-index: 200;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 1.5px;
-    background: var(--espresso);
-    transition: all 0.3s ease;
-    transform-origin: center;
-  }
-
-  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--cream);
-    z-index: 150;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .mobile-menu.open {
-    display: flex;
-    opacity: 1;
-  }
-
-  .mobile-menu a {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4rem;
-    font-weight: 300;
-    color: var(--espresso);
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    padding: 10px 0;
-    transition: color 0.2s;
-  }
-
-  .mobile-menu a:hover { color: var(--warm-gold); }
-
-  .mobile-menu a.highlight {
-    color: var(--warm-gold);
-    font-style: italic;
-  }
-
-  .mobile-menu-divider {
-    width: 40px;
-    height: 1px;
-    background: var(--light-taupe);
-    margin: 8px 0;
-  }
-
-  @media (max-width: 900px) {
-    .hamburger { display: flex; }
+    .slider-arrows { display: none; }
   }
 </style>
 </head>
@@ -1003,7 +992,7 @@
   <div class="nav-logo">Hannah Mickelson Marketing</div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#pricing">View Prices</a></li>
     <li><a href="case-studies.html">Case Studies</a></li>
   </ul>
   <button class="nav-cta" onclick="openContact()">Let's Talk</button>
@@ -1017,10 +1006,10 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services">Services</a>
-  <a href="#pricing">Pricing</a>
+  <a href="#pricing">View Prices</a>
   <a href="case-studies.html">Case Studies</a>
   <div class="mobile-menu-divider"></div>
-  <a class="highlight" href="#contact">Let's Talk</a>
+  <a class="highlight" href="#contact" onclick="closeMenu()">Let's Talk</a>
 </div>
 
 <section class="hero">
@@ -1029,7 +1018,7 @@
   <p class="hero-sub">We run Instagram and TikTok for founders and small businesses that want real engagement, not vanity metrics.</p>
   <div class="hero-actions">
     <a href="case-studies.html" class="btn-primary">View Case Studies</a>
-    <a href="#contact" class="btn-ghost">Learn More</a>
+    <a href="#services" class="btn-ghost">Learn More</a>
   </div>
   <div class="hero-scroll">Scroll to explore</div>
 </section>
@@ -1218,6 +1207,7 @@
   // Contact Modal
   function openContact() {
     document.getElementById('contactModal').classList.add('open');
+    closeMenu();
   }
 
   function closeContact() {
@@ -1252,11 +1242,15 @@
     mobileMenu.classList.toggle('open');
   });
 
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
   // Close menu when link clicked
   document.querySelectorAll('.mobile-menu a').forEach(link => {
     link.addEventListener('click', function() {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
+      closeMenu();
     });
   });
 
