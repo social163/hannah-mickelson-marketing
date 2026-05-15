@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies · Hannah Mickelson Marketing</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --parchment: #EDE6D6;
+    --espresso: #2C1F14;
+    --taupe: #8C7B6B;
+    --warm-gold: #C4A55A;
+    --light-taupe: #BFB3A4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--espresso); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 28px 60px; background: rgba(245,240,232,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(140,123,107,0.15); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--espresso); text-decoration: none; }
+  .nav-back { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--taupe); text-decoration: none; transition: color 0.3s; }
+  .nav-back:hover { color: var(--espresso); }
+
+  .hero { padding: 160px 60px 80px; border-bottom: 1px solid var(--light-taupe); }
+  .eyebrow { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--warm-gold); margin-bottom: 20px; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 7vw, 7rem); font-weight: 300; line-height: 0.95; color: var(--espresso); margin-bottom: 28px; }
+  .hero-title em { font-style: italic; color: var(--taupe); }
+  .hero-sub { max-width: 520px; font-size: 0.92rem; line-height: 1.8; color: var(--taupe); }
+
+  .case-study { padding: 100px 60px; }
+  .client-header { margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid var(--light-taupe); }
+  .client-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 300; color: var(--espresso); line-height: 1.05; margin-bottom: 10px; }
+  .client-handle { font-size: 0.82rem; color: var(--taupe); margin-bottom: 16px; }
+  .client-handle a { color: var(--warm-gold); text-decoration: none; }
+  .client-bio { max-width: 580px; font-size: 0.88rem; line-height: 1.8; color: var(--taupe); }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--light-taupe); border: 1px solid var(--light-taupe); margin-bottom: 80px; }
+  .stat-card { background: var(--parchment); padding: 36px 28px; transition: background 0.3s; }
+  .stat-card:hover { background: var(--cream); }
+  .stat-label { font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--taupe); margin-bottom: 12px; }
+  .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--espresso); line-height: 1; margin-bottom: 6px; }
+  .stat-value.gold { color: var(--warm-gold); }
+  .stat-note { font-size: 0.7rem; color: var(--light-taupe); line-height: 1.4; }
+
+  .section-label { font-size: 0.63rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--warm-gold); margin-bottom: 14px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 300; color: var(--espresso); margin-bottom: 32px; }
+
+  .chart-section { margin-bottom: 80px; }
+  .chart-wrap { background: var(--espresso); padding: 48px; overflow: hidden; position: relative; }
+  .chart-wrap::after { content: ''; position: absolute; bottom: -60px; right: -60px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(196,165,90,0.07) 0%, transparent 70%); pointer-events: none; }
+  .chart-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--cream); margin-bottom: 4px; }
+  .chart-sub { font-size: 0.7rem; color: var(--light-taupe); margin-bottom: 40px; }
+  .bar-chart { display: flex; align-items: flex-end; gap: 10px; height: 160px; }
+  .bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; justify-content: flex-end; }
+  .bar { width: 100%; background: rgba(196,165,90,0.28); border-radius: 2px 2px 0 0; position: relative; transition: background 0.3s; min-height: 6px; }
+  .bar:hover { background: var(--warm-gold); }
+  .bar-val { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-family: 'Cormorant Garamond', serif; font-size: 0.88rem; color: var(--warm-gold); white-space: nowrap; }
+  .bar-label { font-size: 0.57rem; color: var(--light-taupe); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+
+  .posts-section { margin-bottom: 80px; }
+  .posts-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .post-card { background: var(--parchment); border: 1px solid rgba(191,179,164,0.4); overflow: hidden; transition: transform 0.3s, border-color 0.3s; text-decoration: none; display: block; color: inherit; }
+  .post-card:hover { transform: translateY(-4px); border-color: var(--warm-gold); }
+  .post-img-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--parchment); }
+  .post-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .post-card:hover .post-img { transform: scale(1.04); }
+  .post-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--light-taupe); background: var(--parchment); }
+  .post-body { padding: 18px 20px 20px; }
+  .post-type { font-size: 0.57rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm-gold); margin-bottom: 7px; }
+  .post-caption { font-size: 0.82rem; line-height: 1.6; color: var(--taupe); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 13px; }
+  .post-stats { display: flex; gap: 16px; padding-top: 11px; border-top: 1px solid rgba(191,179,164,0.3); }
+  .post-stat { font-size: 0.76rem; color: var(--espresso); display: flex; align-items: center; gap: 4px; }
+  .post-stat strong { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 500; color: var(--warm-gold); }
+  .post-date { font-size: 0.64rem; color: var(--light-taupe); margin-top: 5px; }
+
+  .breakdown-section { margin-bottom: 40px; }
+  .breakdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--light-taupe); border: 1px solid var(--light-taupe); }
+  .breakdown-card { background: var(--parchment); padding: 34px 30px; transition: background 0.3s; }
+  .breakdown-card:hover { background: var(--cream); }
+  .breakdown-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm-gold); margin-bottom: 10px; }
+  .breakdown-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--espresso); margin-bottom: 9px; }
+  .breakdown-desc { font-size: 0.84rem; line-height: 1.7; color: var(--taupe); }
+
+  .more-section { padding: 80px 60px; background: var(--espresso); text-align: center; }
+  .more-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem,4vw,3.2rem); font-weight: 300; color: var(--cream); margin-bottom: 14px; line-height: 1.1; }
+  .more-title em { font-style: italic; color: var(--light-taupe); }
+  .more-sub { font-size: 0.87rem; color: var(--light-taupe); max-width: 400px; margin: 0 auto 32px; line-height: 1.7; }
+  .client-chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+  .chip { padding: 7px 18px; border: 1px solid rgba(196,165,90,0.25); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light-taupe); }
+  .btn-outline { display: inline-block; padding: 14px 40px; border: 1px solid var(--warm-gold); color: var(--warm-gold); font-family: 'Outfit', sans-serif; font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: all 0.3s; }
+  .btn-outline:hover { background: var(--warm-gold); color: var(--espresso); }
+
+  footer { padding: 40px 60px; background: var(--espresso); display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.07); }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; color: var(--cream); }
+  .footer-copy { font-size: 0.7rem; color: var(--taupe); }
+  .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, var(--light-taupe), transparent); }
+
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .hero, .case-study, .more-section { padding-left: 24px; padding-right: 24px; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .posts-grid { grid-template-columns: 1fr 1fr; }
+    .breakdown-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 10px; padding: 32px 24px; }
+    .chart-wrap { padding: 28px; }
+  }
+  @media (max-width: 500px) {
+    .posts-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Hannah Mickelson Marketing</a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<section class="hero">
+  <p class="eyebrow">Real Results · Real Clients</p>
+  <h1 class="hero-title">Case<br><em>Studies.</em></h1>
+  <p class="hero-sub">Live data pulled directly from client profiles. What you see here is what we actually built, post by post, month by month.</p>
+</section>
+
+<div class="divider"></div>
+
+<section class="case-study">
+
+  <div class="client-header">
+    <p class="eyebrow">Client · Food &amp; Beverage · Phoenix Area</p>
+    <h2 class="client-name">Mustache Pretzels</h2>
+    <p class="client-handle">
+      Instagram: <a href="https://www.instagram.com/mustachepretzels/" target="_blank" rel="noopener">@mustachepretzels</a>
+      &nbsp;&middot;&nbsp;
+      <a href="http://www.mustachepretzels.com/" target="_blank" rel="noopener">mustachepretzels.com</a>
+    </p>
+    <p class="client-bio">Phoenix-area food truck serving warm, soft mustache-shaped pretzels at events, markets, and Coors Field. Named one of the top 50 food trucks in the country. We manage their full Instagram presence with reels, carousels, product content, and community engagement.</p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-label">Total Followers</div>
+      <div class="stat-value gold">5,697</div>
+      <div class="stat-note">Active, engaged community</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Posts</div>
+      <div class="stat-value">1,651</div>
+      <div class="stat-note">Feed, reels and carousels</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Top Reel Views</div>
+      <div class="stat-value gold">366</div>
+      <div class="stat-note">Free will reel · May 2026</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Avg Likes Per Post</div>
+      <div class="stat-value">20</div>
+      <div class="stat-note">Recent 10-post average</div>
+    </div>
+  </div>
+
+  <div class="chart-section">
+    <p class="section-label">Post Performance</p>
+    <h3 class="section-title">Recent post engagement</h3>
+    <div class="chart-wrap">
+      <div class="chart-title">Likes by Recent Post</div>
+      <div class="chart-sub">Last 6 published posts · Live data via Apify</div>
+      <div class="bar-chart" id="barChart"></div>
+    </div>
+  </div>
+
+  <div class="posts-section">
+    <p class="section-label">Recent Content</p>
+    <h3 class="section-title">What we've been posting</h3>
+    <div class="posts-grid" id="postsGrid"></div>
+  </div>
+
+  <div class="breakdown-section">
+    <p class="section-label">Content Strategy</p>
+    <h3 class="section-title">How we approach the account</h3>
+    <div class="breakdown-grid">
+      <div class="breakdown-card">
+        <div class="breakdown-label">Content Mix</div>
+        <div class="breakdown-title">Reels, Carousels, Location Posts</div>
+        <p class="breakdown-desc">Short-form video, swipeable menu and event posts, and product photography that makes people hungry on sight.</p>
+      </div>
+      <div class="breakdown-card">
+        <div class="breakdown-label">Voice &amp; Tone</div>
+        <div class="breakdown-title">Playful, Local, Relatable</div>
+        <p class="breakdown-desc">Mustache Pretzels has a personality and we lean into it. Fun captions, food truck humor, and community-first energy that keeps followers coming back.</p>
+      </div>
+      <div class="breakdown-card">
+        <div class="breakdown-label">Engagement</div>
+        <div class="breakdown-title">Community First</div>
+        <p class="breakdown-desc">We respond to comments, hype up events, and make sure every follower feels like part of the crew. That kind of loyalty shows up in the numbers.</p>
+      </div>
+      <div class="breakdown-card">
+        <div class="breakdown-label">Growth</div>
+        <div class="breakdown-title">5,697 Followers. Top 50 in the Country.</div>
+        <p class="breakdown-desc">Consistent posting, real engagement, and a feed that actually looks like the brand. That's what keeps Mustache Pretzels growing.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<div class="more-section">
+  <p class="eyebrow" style="color:var(--warm-gold)">More Coming Soon</p>
+  <h2 class="more-title">More clients.<br><em>More results.</em></h2>
+  <p class="more-sub">Case studies are being built for all active clients. Check back or reach out to ask about a specific niche.</p>
+  <div class="client-chips">
+    <div class="chip">REA Accounting</div>
+    <div class="chip">True Move</div>
+    <div class="chip">Baccus Realty</div>
+    <div class="chip">ellēkay</div>
+    <div class="chip">Cayo Nutra</div>
+    <div class="chip">Kaizen Planning</div>
+  </div>
+  <a href="index.html#contact" class="btn-outline">Work With Hannah</a>
+</div>
+
+<footer>
+  <div class="footer-logo">Hannah Mickelson Marketing</div>
+  <div class="footer-copy">© 2026 · Scottsdale, Arizona</div>
+</footer>
+
+<script>
+  const posts = [
+    { type:'Reel', caption:"Listed as one of the top 50 food trucks in the entire country, but somehow Scottsdale still has people who haven't found us yet. Tag that friend who is always late to discovering the good stuff!", likes:25, views:244, date:'Apr 20, 2026', img:'https://scontent-atl3-3.cdninstagram.com/v/t51.71878-15/658936084_4388877628106744_6214213326920758005_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-atl3-3.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2gGSQZj5oaPFwCKMgtpjMpdQxfQehlWkqdzGQiw1XgAWKcHSEzsmwwSmYyB1MWwO4k0&_nc_ohc=_IGeDVqZBtcQ7kNvwGNdU2E&_nc_gid=sTeJ0acZzWzxGxz1yLg9-w&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af5h5wFcFA--Xmup5qhMj5PMK6YHiio6FfhqEkMw_x3Eew&oe=6A0C2537&_nc_sid=8b3546', url:'https://www.instagram.com/p/DXXP1_wkYkt/' },
+    { type:'Carousel', caption:"It's always a good day when there is a pretzel on the way!", likes:14, views:null, date:'Apr 28, 2026', img:'https://scontent-atl3-3.cdninstagram.com/v/t51.82787-15/682619134_18588976501038691_2306329339660006357_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&_nc_ht=scontent-atl3-3.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gGSQZj5oaPFwCKMgtpjMpdQxfQehlWkqdzGQiw1XgAWKcHSEzsmwwSmYyB1MWwO4k0&_nc_ohc=7L82Hx_U_Y0Q7kNvwF1sEVZ&_nc_gid=sTeJ0acZzWzxGxz1yLg9-w&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=Mzg4NTQyOTM2NTcxMDg5NDU3Ng%3D%3D.3-ccb7-5&oh=00_Af792b4TEvRUMnzu1nGNVpUzohkh5AthE74Dqv0HOc4ORA&oe=6A0C25FE&_nc_sid=8b3546', url:'https://www.instagram.com/p/DXr0Z3Ymikh/' },
+    { type:'Carousel', caption:"Swipe for this month's stops and plan your pretzel run. For the latest updates — food truck life means always moving — check mustachepretzels.com", likes:20, views:null, date:'May 4, 2026', img:'https://scontent-atl3-3.cdninstagram.com/v/t51.82787-15/686959935_18590645134038691_9110114008025890551_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&_nc_ht=scontent-atl3-3.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gGSQZj5oaPFwCKMgtpjMpdQxfQehlWkqdzGQiw1XgAWKcHSEzsmwwSmYyB1MWwO4k0&_nc_ohc=ZEJBVkij8tEQ7kNvwGu1fLB&_nc_gid=sTeJ0acZzWzxGxz1yLg9-w&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=Mzg4OTg2MzY2MjY1NTU0MTQxOA%3D%3D.3-ccb7-5&oh=00_Af6OhZfvAfCOfrqs8ElVkS6zulBiHQ9w9t4RTA7Y3HNYeg&oe=6A0C1FD9&_nc_sid=8b3546', url:'https://www.instagram.com/p/DX7kptPktZF/' },
+    { type:'Reel', caption:"Forever grateful for the people behind the pretzels.", likes:12, views:76, date:'May 7, 2026', img:'https://scontent-atl3-3.cdninstagram.com/v/t51.82787-15/670898829_18591447994038691_6666281741309779913_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-atl3-3.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gGSQZj5oaPFwCKMgtpjMpdQxfQehlWkqdzGQiw1XgAWKcHSEzsmwwSmYyB1MWwO4k0&_nc_ohc=Q8GsofKF8H4Q7kNvwFxDGzM&_nc_gid=sTeJ0acZzWzxGxz1yLg9-w&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af7QZsJ5iPU9sHICIYv7q0qlEYgRXbpoS9oTpMW4OCjScQ&oe=6A0C2934&_nc_sid=8b3546', url:'https://www.instagram.com/p/DYDTPrZSqoB/' },
+    { type:'Carousel', caption:"Summer of 2026 better feel like summer of 2016. With more pretzels!", likes:13, views:null, date:'May 11, 2026', img:'https://scontent-atl3-3.cdninstagram.com/v/t51.82787-15/694124841_18592537009038691_8200814892363075649_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_ht=scontent-atl3-3.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gGSQZj5oaPFwCKMgtpjMpdQxfQehlWkqdzGQiw1XgAWKcHSEzsmwwSmYyB1MWwO4k0&_nc_ohc=G_nM_p4OHHYQ7kNvwEqCsJe&_nc_gid=sTeJ0acZzWzxGxz1yLg9-w&edm=AOQ1c0wBAAAA&ccb=7-5&ig_cache_key=Mzg5NDg0NDk2NzY1NDcyMDUyMQ%3D%3D.3-ccb7-5&oh=00_Af79LeKkFH85SeaP_CcKe1jFhmoRF_DvpAQX_5NETdHEnQ&oe=6A0C24CA&_nc_sid=8b3546', url:'https://www.instagram.com/p/DYNRQbNmqQn/' },
+    { type:'Reel', caption:"Remembering you have free will halfway through your shift.", likes:18, views:366, date:'May 13, 2026', img:'https://scontent-atl3-3.cdninstagram.com/v/t51.71878-15/687377733_954261730548943_8993140544668714691_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-atl3-3.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gGSQZj5oaPFwCKMgtpjMpdQxfQehlWkqdzGQiw1XgAWKcHSEzsmwwSmYyB1MWwO4k0&_nc_ohc=QFd_6IeGDZkQ7kNvwHGBDSM&_nc_gid=sTeJ0acZzWzxGxz1yLg9-w&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af5kBl9POYhA1Sc0JZOsqchUkYAb7Oq3PyoNYYvtpaabSQ&oe=6A0C29D6&_nc_sid=8b3546', url:'https://www.instagram.com/p/DYSa75jThOH/' }
+  ];
+
+  // Render post cards — images load via proxied src, fallback to emoji on error
+  const grid = document.getElementById('postsGrid');
+  posts.forEach(p => {
+    const card = document.createElement('a');
+    card.href = p.url;
+    card.target = '_blank';
+    card.rel = 'noopener';
+    card.className = 'post-card';
+
+    const imgWrap = document.createElement('div');
+    imgWrap.className = 'post-img-wrap';
+
+    const img = document.createElement('img');
+    img.className = 'post-img';
+    img.alt = p.type;
+    img.loading = 'lazy';
+    img.src = p.img;
+    img.onerror = function() {
+      imgWrap.innerHTML = '<div class="post-img-placeholder">🥨</div>';
+    };
+
+    imgWrap.appendChild(img);
+
+    const body = document.createElement('div');
+    body.className = 'post-body';
+    body.innerHTML = `
+      <div class="post-type">${p.type}</div>
+      <p class="post-caption">${p.caption}</p>
+      <div class="post-stats">
+        <div class="post-stat"><strong>${p.likes}</strong>&nbsp;likes</div>
+        ${p.views ? `<div class="post-stat"><strong>${p.views}</strong>&nbsp;views</div>` : ''}
+      </div>
+      <div class="post-date">${p.date}</div>
+    `;
+
+    card.appendChild(imgWrap);
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+
+  // Bar chart
+  const maxVal = Math.max(...posts.map(p => p.likes));
+  const chart = document.getElementById('barChart');
+  posts.forEach(p => {
+    const h = Math.max(5, Math.round((p.likes / maxVal) * 100));
+    const g = document.createElement('div');
+    g.className = 'bar-group';
+    const shortDate = p.date.replace(', 2026','');
+    g.innerHTML = `
+      <div class="bar" style="height:${h}%"><span class="bar-val">${p.likes}</span></div>
+      <div class="bar-label">${shortDate}</div>
+    `;
+    chart.appendChild(g);
+  });
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+
+  document.querySelectorAll('.stat-card, .post-card, .breakdown-card').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(14px)';
+    el.style.transition = `opacity 0.5s ease ${i * 0.05}s, transform 0.5s ease ${i * 0.05}s`;
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
